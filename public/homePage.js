@@ -19,7 +19,6 @@ ApiConnector.current(response => {
 
 stocks();
 
-
 const ratesBoard = new RatesBoard();
     function stocks(){
         ApiConnector.getStocks(response => {
@@ -61,9 +60,9 @@ moneyManager.conversionMoneyCallback = (data) => {
 
 moneyManager.sendMoneyCallback = (data) => {
     ApiConnector.transferMoney(data, (response) => {
-        ProfileWidget.showProfile(response.data);
-        if (response.success === true) {
+            if (response.success === true) {            
             moneyManager.setMessage(response, "Спасибо за успешный перевод в размере " + data.amount + " " + data.currency + "!");
+            ProfileWidget.showProfile(response.data);
         } else {             
             moneyManager.setMessage(response.success, response.error);
             }
